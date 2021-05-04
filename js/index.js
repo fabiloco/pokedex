@@ -1,9 +1,14 @@
 const URL_ALL_POKEMONS = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151';
 let allPokemonsInfo = [];
+let correctAnswer = '';
+
+//DOM
+const pokeImg = document.getElementById('pokemon-img');
+const answersList = document.getElementById('answers');
 
 
 
-const getRandomNum = (max=151) => Math.round(Math.random() * max + 1);
+const getRandomNum = (max=150) => Math.round(Math.random() * max + 1);
 
 // Petición realizada con promises
 const getAllPokemons = () => {
@@ -28,20 +33,53 @@ const getAnswers = (answers = 3) => {
     while(options.length < answers) {
         randomNum = getRandomNum();
         currentPokemon = allPokemonsInfo[randomNum];
+        console.log(options);
         if(options.find(({ name }) => currentPokemon.name !== name)) {
             options.push(currentPokemon);
         }     
     }
+    let allAnswers = options.map(answer => answer.name)
+    // for(const answer of options){
+    //     allAnswers.push(answer.name);
+    // }
+
     getSprite(options[0].url.substring(34).replace('/',''));
+
+    correctAnswer = options[0].name;
+    console.log(correctAnswer);
+
+    allAnswers = allAnswers.sort(() => Math.random() - 0.5);
+
+    writeAnswers(allAnswers);
 }
 
 const getSprite = (id) => { 
     fetch(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
         .then(res => res.json())
         .then(pokeInfo => {
-            console.log(pokeInfo);
+            pokeImg.src = pokeInfo.sprites.front_default;
         });    
 }
+
+const writeAnswers = (answers) => { 
+    const fragment = document.createDocumentFragment();
+    for(const answer of answers){
+        const listItem = document.createElement('li');
+        listItem.textContent = answer;
+        fragment.append(listItem);
+    }
+    answersList.append(fragment);
+}
+
+answersList.addEventListener('click', (e) => {
+    if(e.target.tagName === 'LI'){
+        if(e.target.textContent === correctAnswer){
+            console.log('Correcto');
+        }else{
+            console.log('Fallaste');
+        }
+    }
+})
 
 getAllPokemons();
 
