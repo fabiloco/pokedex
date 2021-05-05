@@ -3,8 +3,8 @@ let allPokemonsInfo = [];
 let correctAnswer = '';
 
 //DOM
-const pokeImg = document.getElementById('pokemon-img');
-const answersList = document.getElementById('answers');
+const pokeImg = document.getElementById('poke-img');
+const answersList = document.getElementById('poke-answers');
 
 
 

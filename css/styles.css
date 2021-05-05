@@ -1,0 +1,151 @@
+@font-face {
+  font-family: "Pokemon-Solid";
+  src: url("/assets/fonts/Pokemon-Solid.ttf");
+}
+body {
+  font-family: "Pokemon-Solid", sans-serif;
+  background-color: var(--grey);
+  overflow: hidden;
+}
+
+:root {
+  --red: #ee1c25;
+  --white:#e8e8e8;
+  --blue: #2787f5;
+  --grey: #858585;
+  --yellow: #ffcb05;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 3px solid var(--white);
+}
+
+.game {
+  background-color: red;
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+.game__image {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.game__answers {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  text-align: center;
+  line-height: 2;
+  font-size: 2rem;
+  color: var(--white);
+  text-transform: capitalize;
+  letter-spacing: 6px;
+}
+.game__answers li {
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+.game__answers li:hover {
+  color: var(--yellow);
+  transform: scale(1.1);
+  -webkit-text-stroke: 2px var(--blue);
+}
+
+.loader {
+  position: relative;
+}
+.loader__pokeball-container {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  animation: tremor infinite 0.3s linear;
+}
+.loader__pokeball {
+  background-image: linear-gradient(var(--red) 50%, var(--white) 50%);
+  border-radius: 50%;
+  border: 14px solid black;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotate infinite 1s linear;
+}
+.loader__pokeball::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 14px;
+  background-color: black;
+}
+.loader__pokeball::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 14px solid black;
+  z-index: 100;
+}
+.loader__text {
+  position: absolute;
+  top: 350px;
+  left: 200px;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  letter-spacing: 5px;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--blue);
+  animation: scale infinite alternate 1s linear;
+}
+.loader__text::after {
+  content: "";
+  background-color: red;
+  position: absolute;
+  width: 40px;
+  height: 10px;
+  top: 24px;
+  transform: translateX(-35px);
+  animation: move steps(1) infinite 2s;
+}
+@keyframes move {
+  0% {
+    transform: translateX(-5px);
+  }
+  33% {
+    transform: translateX(-25px);
+  }
+  66% {
+    transform: translateX(-15px);
+  }
+}
+@keyframes scale {
+  to {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes tremor {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
