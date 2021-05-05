@@ -1,5 +1,6 @@
 //Base styles
 @import 'base.scss';
+@import 'normalize.css';
 
 // Variables
 @import 'variables.scss';
@@ -8,3 +9,4 @@
 @import 'blocks/header.scss';
 @import 'blocks/game.scss';
 @import 'blocks/loader.scss';
+@import 'blocks/pokedex.scss';

@@ -5,6 +5,7 @@ let correctAnswer = '';
 //DOM
 const pokeImg = document.getElementById('poke-img');
 const answersList = document.getElementById('poke-answers');
+const loader = document.getElementById('loader');
 
 
 
@@ -12,6 +13,7 @@ const getRandomNum = (max=150) => Math.round(Math.random() * max + 1);
 
 // Petición realizada con promises
 const getAllPokemons = () => {
+    loader.style.display = 'block';
     fetch(URL_ALL_POKEMONS)
         .then(res => res.json())
         .then(allPokemons => {
@@ -57,23 +59,30 @@ const getSprite = (id) => {
     fetch(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
         .then(res => res.json())
         .then(pokeInfo => {
+            pokeImg.classList.add('game__image');
             pokeImg.src = pokeInfo.sprites.front_default;
         });    
 }
 
 const writeAnswers = (answers) => { 
+    answersList.textContent = '';
     const fragment = document.createDocumentFragment();
     for(const answer of answers){
         const listItem = document.createElement('li');
         listItem.textContent = answer;
         fragment.append(listItem);
     }
+    loader.style.display = 'none';
+    pokeImg.classList.remove('game__image--show');
+    pokeImg.classList.add('game__image');
     answersList.append(fragment);
 }
 
 answersList.addEventListener('click', (e) => {
     if(e.target.tagName === 'LI'){
         if(e.target.textContent === correctAnswer){
+            pokeImg.classList.add('game__image--show');
+            setTimeout(() => getAnswers(), 2500);
             console.log('Correcto');
         }else{
             console.log('Fallaste');

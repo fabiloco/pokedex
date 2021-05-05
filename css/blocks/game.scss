@@ -9,6 +9,12 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        filter: brightness(0);
+
+        &--show{
+            transition: filter 1s;
+            filter: brightness(1);
+        }
     }
 
     &__answers{
