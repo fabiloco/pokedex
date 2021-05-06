@@ -2,11 +2,13 @@ const URL_ALL_POKEMONS = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151'
 let allPokemonsInfo = [];
 let correctAnswer = '';
 
+let pokedex = [];
+
 //DOM
 const pokeImg = document.getElementById('poke-img');
 const answersList = document.getElementById('poke-answers');
 const loader = document.getElementById('loader');
-
+const pokedexElements = document.getElementById('pokedex');
 
 
 const getRandomNum = (max=150) => Math.round(Math.random() * max + 1);
@@ -19,6 +21,7 @@ const getAllPokemons = () => {
         .then(allPokemons => {
             allPokemonsInfo = [...allPokemons.results];
             getAnswers();
+            fillPokedex();
         });
 }
 // Petición realizada con async-await y fetch
@@ -78,9 +81,59 @@ const writeAnswers = (answers) => {
     answersList.append(fragment);
 }
 
+const createPokedex = () =>{
+    pokedexElements.textContent = '';
+    console.log(pokedex);
+    const fragment = document.createDocumentFragment();
+    pokedex.forEach(pokemon => {
+        const pokecard = document.createElement('div')
+        pokecard.classList.add('pokedex__card');
+        const pokeball = document.createElement('div');
+        pokeball.classList.add('pokedex__pokeball');
+        
+        if(pokemon.catched){
+            pokecard.classList.add('pokedex__card--show');
+        }
+        
+        pokecard.appendChild(pokeball)
+        fragment.appendChild(pokecard);
+    });
+    pokedexElements.appendChild(fragment);
+}
+
+const fillPokedex = () => {
+    console.log(allPokemonsInfo);
+    if(localStorage.getItem('pokedex')){
+        pokedex = JSON.parse(localStorage.getItem('pokedex'));
+    }else{
+        pokedex = allPokemonsInfo.map((pokemon, index) => {
+            return{
+                id:index + 1,
+                name: pokemon.name,
+                catched: false
+            };
+        });
+        localStorage.setItem('pokedex', JSON.stringify(pokedex));
+    }
+    createPokedex();
+}
+
+const catchPokemon = () => {
+    const caughtPokemon = pokedex.findIndex(pokemon => pokemon.name === correctAnswer);
+    console.log(caughtPokemon);
+
+    pokedex[caughtPokemon].catched = true;
+
+    localStorage.setItem('pokedex', JSON.stringify(pokedex));
+
+    console.log(pokedex[caughtPokemon]);
+}
+
 answersList.addEventListener('click', (e) => {
     if(e.target.tagName === 'LI'){
         if(e.target.textContent === correctAnswer){
+            catchPokemon();
+            createPokedex();
             pokeImg.classList.add('game__image--show');
             setTimeout(() => getAnswers(), 2500);
             console.log('Correcto');

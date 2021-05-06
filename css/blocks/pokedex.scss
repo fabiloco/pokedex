@@ -5,6 +5,8 @@
     grid-template-columns: repeat(2, 200px);
     padding: 20px;
     gap: 50px;
+    height: 100vh;
+    overflow: scroll;
 
     &__card{
         width: 200px;
@@ -15,6 +17,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &--show{
+            background-color: var(--blue);
+
+            .pokedex__pokeball::before{
+                background-color: var(--blue);
+            }
+        }
     }
 
     &__pokeball{

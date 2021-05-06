@@ -27,6 +27,11 @@ main {
   justify-content: space-around;
   border-bottom: 3px solid var(--white);
 }
+.header__title {
+  color: var(--white);
+  -webkit-text-stroke: 1px black;
+  letter-spacing: 3px;
+}
 
 .game {
   background-color: red;
@@ -166,6 +171,8 @@ main {
   grid-template-columns: repeat(2, 200px);
   padding: 20px;
   gap: 50px;
+  height: 100vh;
+  overflow: scroll;
 }
 .pokedex__card {
   width: 200px;
@@ -176,6 +183,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.pokedex__card--show {
+  background-color: var(--blue);
+}
+.pokedex__card--show .pokedex__pokeball::before {
+  background-color: var(--blue);
 }
 .pokedex__pokeball {
   position: absolute;
