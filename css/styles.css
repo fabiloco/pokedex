@@ -15,6 +15,7 @@ main {
 
 :root {
   --red: #ee1c25;
+  --darkRed: #a60000;
   --white:#e8e8e8;
   --blue: #2787f5;
   --darkBlue: #00436e;
@@ -74,8 +75,8 @@ main {
 }
 .game__answers li:hover {
   color: var(--yellow);
-  transform: scale(1.1);
   -webkit-text-stroke: 2px var(--blue);
+  transform: scale(1.1);
 }
 
 @keyframes caught {
@@ -180,7 +181,7 @@ main {
 }
 
 .pokedex {
-  background-color: grey;
+  background-color: #3f3f3f;
   width: 50%;
   display: grid;
   justify-items: center;
@@ -199,10 +200,25 @@ main {
   height: 300px;
   border-radius: 15px;
   background-color: var(--darkBlue);
+  box-shadow: 3px 3px 0px #003658;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+}
+.pokedex__card img {
+  border: 4px solid var(--yellow);
+  border-radius: 15px;
+  background-color: var(--blue);
+}
+.pokedex__card p {
+  font-size: 14px;
+}
+.pokedex__card h2 {
+  text-transform: capitalize;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--blue);
 }
 .pokedex__card--show {
   background-color: var(--blue);
@@ -264,7 +280,10 @@ main {
 
 .back {
   transform: rotateY(180deg);
-  border-radius: 15px;
+  background: #a60000;
+  background: radial-gradient(circle, #a60000 33%, #ee1c25 100%);
+  border-radius: 20px;
+  border: 4px solid var(--yellow);
 }
 
 .rotate {

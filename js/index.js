@@ -108,17 +108,42 @@ const writeAnswers = (answers) => {
 const getPokeStats = (id, obj) => {
     const urlPoke = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     
+    //stats1
+    let hp = undefined;
+    let atk = undefined;
+    const stats1Text =  document.createElement('p');
+    
+    //stats1
+    let def = undefined;
+    let speed = undefined;
+    const stats2Text =  document.createElement('p');
+
+    //Weight
     let weight = undefined;
+    
     const weightText =  document.createElement('p');
-    //let weight = undefined;
-    //const weightText =  document.createElement('p');
+    
 
     fetch(urlPoke)
         .then(res => res.json())
         .then(stats => {
+            //stats1
+            hp = stats.stats[0].base_stat;
+            atk = stats.stats[1].base_stat;
+            stats1Text.textContent = `HP: ${hp} ATK: ${atk}`;
+            obj.appendChild(stats1Text);
+
+            //stats1
+            speed = stats.stats[3].base_stat;
+            def = stats.stats[2].base_stat;
+            stats2Text.textContent = `DEF: ${def} Speed: ${speed}`;
+            obj.appendChild(stats2Text);
+
+            //Weight
             weight = stats.weight;
             weightText.textContent = `Weight: ${weight}`;
             obj.appendChild(weightText);
+
         });
     
 }
@@ -136,14 +161,19 @@ const fillBack = (pokemon, obj) => {
 
         const pokecardInfo = document.createElement('div');
         //Agregar estilos del pokecardInfo
-
+        
         const pokeName = document.createElement('h2');
         pokeName.textContent = pokemon.name;
-        
-        getSpriteCard(pokemon.id, pokecardInfo);
-        getPokeStats(pokemon.id, pokecardInfo);
 
         pokecardInfo.appendChild(pokeName);
+
+        getSpriteCard(pokemon.id, pokecardInfo);
+
+        getPokeStats(pokemon.id, pokecardInfo);
+
+
+
+        
 
         fragment.appendChild(pokecardInfo);
 

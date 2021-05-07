@@ -42,8 +42,8 @@
 
             &:hover{
                 color: var(--yellow);
-                transform: scale(1.1);
                 -webkit-text-stroke: 2px var(--blue);
+                transform: scale(1.1);
             }
         }
     }
