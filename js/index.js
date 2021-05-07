@@ -105,7 +105,32 @@ const writeAnswers = (answers) => {
     answersList.append(fragment);
 }
 
-const fillFront = (pokemon, obj) => {
+const getPokeStats = (id, obj) => {
+    const urlPoke = `https://pokeapi.co/api/v2/pokemon/${id}/`;
+    
+    let weight = undefined;
+    const weightText =  document.createElement('p');
+    //let weight = undefined;
+    //const weightText =  document.createElement('p');
+
+    fetch(urlPoke)
+        .then(res => res.json())
+        .then(stats => {
+            weight = stats.weight;
+            weightText.textContent = `Weight: ${weight}`;
+            obj.appendChild(weightText);
+        });
+    
+}
+
+const getSpriteCard = (id, obj) => {
+    const urlSpriteCard = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    const spriteCard = document.createElement('img');
+    spriteCard.src = urlSpriteCard;
+    obj.appendChild(spriteCard);
+}
+
+const fillBack = (pokemon, obj) => {
     if(pokemon.catched){
         const fragment = document.createDocumentFragment();
 
@@ -114,8 +139,13 @@ const fillFront = (pokemon, obj) => {
 
         const pokeName = document.createElement('h2');
         pokeName.textContent = pokemon.name;
+        
+        getSpriteCard(pokemon.id, pokecardInfo);
+        getPokeStats(pokemon.id, pokecardInfo);
 
-        fragment.appendChild(pokeName);
+        pokecardInfo.appendChild(pokeName);
+
+        fragment.appendChild(pokecardInfo);
 
         obj.appendChild(fragment);
 
@@ -127,6 +157,7 @@ const createPokedex = () =>{
     pokedexElements.textContent = '';
     console.log(pokedex);
     const fragment = document.createDocumentFragment();
+
     pokedex.forEach(pokemon => {
         const pokecard = document.createElement('div')
         pokecard.classList.add('pokedex__card');
@@ -142,7 +173,7 @@ const createPokedex = () =>{
         const pokecardBack = document.createElement('div');
         pokecardBack.classList.add('back');
         
-        fillFront(pokemon, pokecardBack);
+        fillBack(pokemon, pokecardBack);
 
 
         if(pokemon.catched){
@@ -225,5 +256,6 @@ answersList.addEventListener('click', (e) => {
 })
 
 getAllPokemons();
+
 
 
