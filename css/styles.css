@@ -1,7 +1,7 @@
 @import 'normalize.css';
 @font-face {
   font-family: "Pokemon-Solid";
-  src: url("assets/fonts/Pokemon-Solid.ttf");
+  src: url("../assets/fonts/Pokemon-Solid.ttf");
 }
 body {
   font-family: "Pokemon-Solid", sans-serif;
