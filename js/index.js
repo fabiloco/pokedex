@@ -34,7 +34,7 @@ const getAllPokemons = () => {
 //     const allPokemons = await request.json();
 // }
 
-const getAnswers = (answers = 5) => {
+const getAnswers = (answers = 4) => {
     
     pokeImg.classList.remove('game__image--show');
     pokeImg.classList.remove('game__image--error');
@@ -72,15 +72,24 @@ const getAnswers = (answers = 5) => {
 }
 
 const getSprite = (id) => { 
-    fetch(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
-        .then(res => res.json())
-        .then(pokeInfo => {
-            pokeImg.classList.add('game__image');
-            pokeImg.src = pokeInfo.sprites.front_default;
-            pokeImg.style.display = 'block';
-            answersList.style.display = 'block';
-            loader.style.display = 'none';
-        });    
+    // This worked
+    // fetch(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
+    //     .then(res => res.json())
+    //     .then(pokeInfo => {
+    //         pokeImg.classList.add('game__image');
+    //         pokeImg.src = pokeInfo.sprites.front_default;
+    //         pokeImg.style.display = 'block';
+    //         answersList.style.display = 'block';
+    //         loader.style.display = 'none';
+    //     });  
+    
+    const urlImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+    pokeImg.classList.add('game__image');
+    pokeImg.src = urlImg;
+    pokeImg.style.display = 'block';
+    answersList.style.display = 'block';
+    loader.style.display = 'none';
+        
 }
 
 const writeAnswers = (answers) => { 
