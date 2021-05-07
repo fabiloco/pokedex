@@ -1,7 +1,7 @@
 .caught{
     position: relative;
-    left: 170px;
-    top: -200px;
+    left: 44%;
+    top: -20vh;
 
 
     z-index: 100;
@@ -45,53 +45,44 @@
 }
 
 @keyframes pokeballMove{
-    0%{
-        transform: translateY(-300px);
-    }
-    5%{
-        transform: translateY(300px);
-    }
-    10%{
-        transform: translateY(300px);
-    }
     15%{
         filter: invert(50%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     20%{
         filter: invert(0%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     25%{
         filter: invert(50%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     30%{
         filter: invert(0%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     35%{
         filter: invert(50%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     40%{
         filter: invert(0%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     45%{
         filter: invert(0%);
-        transform: translateY(300px);
+        transform: translateY(36vh);
     }
     50%{
-        transform: translateY(300px) translateX(400px);
+        transform: translateY(36vh) translateX(50vw);
     }
     55%{
         filter: opacity(0.5);
-        transform: translateY(300px) translateX(400px);
+        transform: translateY(36vh) translateX(50vw);
     }
     60%{
         filter: opacity(0);
-        transform: translateY(300px) translateX(400px);
+        transform: translateY(50vh) translateX(50vw);
     }
     100%{
         filter: opacity(0);

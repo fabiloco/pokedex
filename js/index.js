@@ -190,6 +190,7 @@ const catchPokemon = () => {
 
 const caughtAnim = async () => {
     caught.classList.add('caught-anim');
+    pokeImg.classList.add('game__image--show');
     await setTimeout(()=>{
 
         caught.classList.remove('caught-anim');
