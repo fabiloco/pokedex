@@ -49,6 +49,16 @@ main {
 .game__image--show {
   transition: filter 1s;
   filter: brightness(1);
+  animation-name: caught;
+}
+.game__image--error {
+  transition: transform 1s;
+  transform: translateX(-400px);
+}
+@keyframes caught {
+  0% {
+    transform: scale(0.3);
+  }
 }
 .game__answers {
   list-style: none;
@@ -168,6 +178,7 @@ main {
   background-color: grey;
   width: 50%;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   padding: 20px;
   gap: 50px;
@@ -257,6 +268,103 @@ main {
 
 .normal {
   transform: rotateY(0deg);
+}
+
+.caught {
+  position: relative;
+  left: 170px;
+  top: -200px;
+  z-index: 100;
+}
+.caught__pokeball-container {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.caught__pokeball {
+  background-image: linear-gradient(var(--red) 50%, var(--white) 50%);
+  border-radius: 50%;
+  border: 4px solid black;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.caught__pokeball::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: black;
+}
+.caught__pokeball::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 4px solid black;
+  z-index: 100;
+}
+
+@keyframes pokeballMove {
+  0% {
+    transform: translateY(-300px);
+  }
+  5% {
+    transform: translateY(300px);
+  }
+  10% {
+    transform: translateY(300px);
+  }
+  15% {
+    filter: invert(50%);
+    transform: translateY(300px);
+  }
+  20% {
+    filter: invert(0%);
+    transform: translateY(300px);
+  }
+  25% {
+    filter: invert(50%);
+    transform: translateY(300px);
+  }
+  30% {
+    filter: invert(0%);
+    transform: translateY(300px);
+  }
+  35% {
+    filter: invert(50%);
+    transform: translateY(300px);
+  }
+  40% {
+    filter: invert(0%);
+    transform: translateY(300px);
+  }
+  45% {
+    filter: invert(0%);
+    transform: translateY(300px);
+  }
+  50% {
+    transform: translateY(300px) translateX(400px);
+  }
+  55% {
+    filter: opacity(0.5);
+    transform: translateY(300px) translateX(400px);
+  }
+  60% {
+    filter: opacity(0);
+    transform: translateY(300px) translateX(400px);
+  }
+  100% {
+    filter: opacity(0);
+  }
+}
+.caught-anim {
+  animation: pokeballMove;
+  animation-duration: 5s;
 }
 
 /*# sourceMappingURL=styles.css.map */

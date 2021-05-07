@@ -9,6 +9,7 @@ const pokeImg = document.getElementById('poke-img');
 const answersList = document.getElementById('poke-answers');
 const loader = document.getElementById('loader');
 const pokedexElements = document.getElementById('pokedex');
+const caught = document.getElementById('caught');
 
 
 const getRandomNum = (max=150) => Math.round(Math.random() * max + 1);
@@ -35,9 +36,12 @@ const getAllPokemons = () => {
 
 const getAnswers = (answers = 5) => {
     
+    pokeImg.classList.remove('game__image--show');
+    pokeImg.classList.remove('game__image--error');
+
     pokeImg.style.display = 'block';
     answersList.style.display = 'block';
-    //loader.style.display = 'none';
+    loader.style.display = 'none';
     
     
     const options = [];
@@ -184,15 +188,27 @@ const catchPokemon = () => {
     console.log(pokedex[caughtPokemon]);
 }
 
+const caughtAnim = async () => {
+    caught.classList.add('caught-anim');
+    await setTimeout(()=>{
+
+        caught.classList.remove('caught-anim');
+
+    }, 4000);
+}
+
 answersList.addEventListener('click', (e) => {
     if(e.target.tagName === 'LI'){
         if(e.target.textContent === correctAnswer){
+            caughtAnim();
             catchPokemon();
             createPokedex();
             pokeImg.classList.add('game__image--show');
-            setTimeout( getAnswers(), 2500);
+            setTimeout(getAnswers, 2500);
             console.log('Correcto');
         }else{
+            pokeImg.classList.add('game__image--error');
+            setTimeout(getAnswers, 2500);
             console.log('Fallaste');
         }
     }
