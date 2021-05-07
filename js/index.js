@@ -37,7 +37,7 @@ const getAnswers = (answers = 5) => {
     
     pokeImg.style.display = 'block';
     answersList.style.display = 'block';
-    loader.style.display = 'none';
+    //loader.style.display = 'none';
     
     
     const options = [];
@@ -92,6 +92,24 @@ const writeAnswers = (answers) => {
     answersList.append(fragment);
 }
 
+const fillFront = (pokemon, obj) => {
+    if(pokemon.catched){
+        const fragment = document.createDocumentFragment();
+
+        const pokecardInfo = document.createElement('div');
+        //Agregar estilos del pokecardInfo
+
+        const pokeName = document.createElement('h2');
+        pokeName.textContent = pokemon.name;
+
+        fragment.appendChild(pokeName);
+
+        obj.appendChild(fragment);
+
+    }
+}
+    
+
 const createPokedex = () =>{
     pokedexElements.textContent = '';
     console.log(pokedex);
@@ -99,14 +117,40 @@ const createPokedex = () =>{
     pokedex.forEach(pokemon => {
         const pokecard = document.createElement('div')
         pokecard.classList.add('pokedex__card');
+
+        const pokecardFront = document.createElement('div');
+        pokecardFront.classList.add('front');
+
+        
+
         const pokeball = document.createElement('div');
         pokeball.classList.add('pokedex__pokeball');
+
+        const pokecardBack = document.createElement('div');
+        pokecardBack.classList.add('back');
         
+        fillFront(pokemon, pokecardBack);
+
+
         if(pokemon.catched){
             pokecard.classList.add('pokedex__card--show');
+            
+            pokecard.addEventListener('click', (e) => {
+                if(pokecard.classList.contains('rotate')){
+                    pokecard.classList.remove('rotate');
+                    pokecard.classList.add('normal');
+                }else{
+                    pokecard.classList.remove('normal');
+                    pokecard.classList.add('rotate');
+                }
+            });
+
         }
         
-        pokecard.appendChild(pokeball)
+        pokecard.appendChild(pokecardFront);
+        pokecard.appendChild(pokecardBack);
+        pokecardFront.appendChild(pokeball);
+        pokecard.appendChild(pokecardBack);
         fragment.appendChild(pokecard);
     });
     pokedexElements.appendChild(fragment);
