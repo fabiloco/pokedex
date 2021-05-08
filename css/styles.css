@@ -35,17 +35,19 @@ main {
 }
 
 .game {
-  background-color: red;
+  background-color: white;
   width: 50%;
   height: 100vh;
   position: relative;
-  overflow: auto;
+  overflow: scroll;
 }
 .game__image {
   width: 40%;
   display: block;
-  margin: 20px auto 20px auto;
+  margin: 0 auto 0 auto;
+  padding: 20px;
   filter: brightness(0);
+  z-index: 91;
 }
 .game__image--show {
   transition: filter 1s;
@@ -336,42 +338,42 @@ main {
 @keyframes pokeballMove {
   15% {
     filter: invert(50%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   20% {
     filter: invert(0%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   25% {
     filter: invert(50%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   30% {
     filter: invert(0%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   35% {
     filter: invert(50%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   40% {
     filter: invert(0%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   45% {
     filter: invert(0%);
-    transform: translateY(36vh);
+    transform: translateY(65vh);
   }
   50% {
-    transform: translateY(36vh) translateX(50vw);
+    transform: translateY(65vh) translateX(50vw);
   }
   55% {
     filter: opacity(0.5);
-    transform: translateY(36vh) translateX(50vw);
+    transform: translateY(65vh) translateX(50vw);
   }
   60% {
     filter: opacity(0);
-    transform: translateY(50vh) translateX(50vw);
+    transform: translateY(65vh) translateX(50vw);
   }
   100% {
     filter: opacity(0);
@@ -380,6 +382,301 @@ main {
 .caught-anim {
   animation: pokeballMove;
   animation-duration: 5s;
+}
+
+.device-container {
+  background-color: var(--red);
+  border-radius: 20px;
+  border-left: 10px solid var(--darkRed);
+  border-bottom: 10px solid var(--darkRed);
+  position: relative;
+}
+
+.top {
+  display: flex;
+  clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 54% 40%, 100% 40%, 100% 0);
+  background-color: var(--darkRed);
+  height: 100px;
+}
+
+.top-circles {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  background-color: red;
+  clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 54% 40%, 100% 40%, 100% 0);
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid black;
+  margin: 10px 0 10px 10px;
+}
+.circle-big {
+  width: 60px;
+  height: 60px;
+}
+.circle-big::after {
+  content: "";
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid black;
+  left: 19px;
+  top: 15px;
+  position: absolute;
+  background-color: #05fafb;
+}
+.circle-big::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: white;
+  clip-path: polygon(5% 25%, 14% 19%, 24% 14%, 34% 12%, 53% 14%, 72% 19%, 89% 24%, 97% 36%, 96% 50%, 82% 60%, 66% 70%, 54% 73%, 40% 71%, 25% 69%, 16% 66%, 8% 58%, 2% 45%, 3% 34%);
+  left: 32px;
+  top: 20px;
+  z-index: 100;
+}
+.circle-red {
+  background-color: #f50909;
+}
+.circle-red::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #ff6268;
+  clip-path: polygon(5% 25%, 14% 19%, 24% 14%, 34% 12%, 53% 14%, 72% 19%, 89% 24%, 97% 36%, 96% 50%, 82% 60%, 66% 70%, 54% 73%, 40% 71%, 25% 69%, 16% 66%, 8% 58%, 2% 45%, 3% 34%);
+  left: 89px;
+  top: 14px;
+  z-index: 100;
+}
+.circle-yellow {
+  background-color: #ffe700;
+}
+.circle-yellow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #feff85;
+  clip-path: polygon(5% 25%, 14% 19%, 24% 14%, 34% 12%, 53% 14%, 72% 19%, 89% 24%, 97% 36%, 96% 50%, 82% 60%, 66% 70%, 54% 73%, 40% 71%, 25% 69%, 16% 66%, 8% 58%, 2% 45%, 3% 34%);
+  left: 123px;
+  top: 14px;
+  z-index: 100;
+}
+.circle-green {
+  background-color: #4ffb11;
+}
+.circle-green::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #c7ffa4;
+  clip-path: polygon(5% 25%, 14% 19%, 24% 14%, 34% 12%, 53% 14%, 72% 19%, 89% 24%, 97% 36%, 96% 50%, 82% 60%, 66% 70%, 54% 73%, 40% 71%, 25% 69%, 16% 66%, 8% 58%, 2% 45%, 3% 34%);
+  left: 158px;
+  top: 14px;
+  z-index: 100;
+}
+
+.screen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.screen {
+  margin: 30px 30px 0 30px;
+  padding: 0 0 10px 10px;
+  border-radius: 20px;
+  background-color: #6a6a70;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%);
+}
+.screen-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #ddded9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%);
+}
+.screen-display {
+  border: 2px solid black;
+  background-color: var(--blue);
+  width: 300px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.screen-display-mount {
+  background-color: green;
+  border-radius: 100%;
+  width: 62%;
+  top: 130px;
+  height: 50px;
+  position: absolute;
+  z-index: 90;
+}
+.screen-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin-top: 10px;
+  transform: translateX(-120px);
+  background-color: var(--red);
+}
+
+.botton-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 80px 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.botton .buttom {
+  width: 40px;
+  height: 40px;
+  background-color: var(--darkBlue);
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid black;
+}
+.botton .buttom::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid black;
+  background-color: var(--blue);
+  left: 1px;
+  bottom: 1px;
+}
+.botton .botton__rectangle-buttom {
+  width: 100px;
+  height: 20px;
+  border-radius: 30px;
+}
+.botton .botton__rectangle-buttom::before {
+  width: 100px;
+  height: 20px;
+  border-radius: 30px;
+}
+.botton .botton__rectangle-buttom-green {
+  background-color: #196a2f;
+}
+.botton .botton__rectangle-buttom-green::before {
+  background-color: #56fd00;
+}
+.botton .botton__rectangle-buttom-orange {
+  background-color: #840b12;
+}
+.botton .botton__rectangle-buttom-orange::before {
+  background-color: #f96002;
+}
+.botton .answers-container {
+  background-color: #fbfb05;
+  border-radius: 30px;
+  border: 3px solid black;
+  grid-column: 2/4;
+  padding: 0 30px 0 30px;
+  margin-bottom: 100px;
+}
+.botton .answers-container ul {
+  font-size: 20px;
+}
+
+.botton-pad {
+  align-self: center;
+  grid-column: 4/5;
+  grid-row: 1/3;
+  display: grid;
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px;
+}
+.botton-pad .pad-button {
+  width: 30px;
+  height: 30px;
+  background-color: #086364;
+  border: 3px solid black;
+  border-radius: 10px;
+  position: relative;
+}
+.botton-pad .pad-button::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #004e50;
+  border: 3px solid black;
+  border-radius: 10px;
+  left: 1px;
+  bottom: 1px;
+}
+.botton-pad .pad-top {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  border-bottom: none;
+}
+.botton-pad .pad-top::before {
+  border-bottom: none;
+}
+.botton-pad .pad-right {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  border-left: none;
+}
+.botton-pad .pad-right::before {
+  border-left: none;
+}
+.botton-pad .pad-bottom {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  border-top: none;
+}
+.botton-pad .pad-bottom::before {
+  border-top: none;
+}
+.botton-pad .pad-left {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  border-right: none;
+  z-index: 110;
+}
+.botton-pad .pad-left::before {
+  border-right: none;
+}
+.botton-pad .pad-center {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border: none;
+  z-index: 100;
+  left: 3px;
+  background-color: #004e50;
+}
+.botton-pad .pad-center::before {
+  border: none;
+  background-color: #004e50;
 }
 
 /*# sourceMappingURL=styles.css.map */
