@@ -5,7 +5,7 @@
 }
 body {
   font-family: "Pokemon-Solid", sans-serif;
-  background-color: var(--grey);
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
   overflow: hidden;
 }
 
@@ -35,7 +35,7 @@ main {
 }
 
 .game {
-  background-color: white;
+  padding: 20px 0 20px 0;
   width: 50%;
   height: 100vh;
   position: relative;
@@ -87,6 +87,12 @@ main {
   }
   to {
     filter: contrast(0%);
+  }
+}
+@media (min-width: 1281px) {
+  .game-container {
+    width: 70%;
+    margin-left: auto;
   }
 }
 .loader {
@@ -183,15 +189,20 @@ main {
 }
 
 .pokedex {
-  background-color: #3f3f3f;
+  background-color: var(--red);
   width: 50%;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   padding: 20px;
+  margin-top: 20px;
   gap: 50px;
   height: 100vh;
   overflow: scroll;
+}
+.pokedex-container {
+  width: 70%;
+  margin-left: auto;
 }
 .pokedex__card {
   perspective: 1000px;
@@ -386,10 +397,12 @@ main {
 
 .device-container {
   background-color: var(--red);
-  border-radius: 20px;
+  border-radius: 15px;
+  border-top-right-radius: none;
   border-left: 10px solid var(--darkRed);
   border-bottom: 10px solid var(--darkRed);
   position: relative;
+  box-shadow: -10px 10px 15px grey;
 }
 
 .top {
@@ -397,6 +410,7 @@ main {
   clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 54% 40%, 100% 40%, 100% 0);
   background-color: var(--darkRed);
   height: 100px;
+  border-top-left-radius: 15px;
 }
 
 .top-circles {
@@ -405,6 +419,7 @@ main {
   display: flex;
   background-color: red;
   clip-path: polygon(0% 0%, 0% 100%, 33% 100%, 54% 40%, 100% 40%, 100% 0);
+  border-radius: 15px;
 }
 
 .circle {
@@ -573,6 +588,9 @@ main {
   bottom: 1px;
 }
 .botton .botton__rectangle-buttom {
+  --ledWon: #56fd00;
+  --ledLose: #f96002;
+  justify-self: left;
   width: 100px;
   height: 20px;
   border-radius: 30px;
@@ -586,37 +604,38 @@ main {
   background-color: #196a2f;
 }
 .botton .botton__rectangle-buttom-green::before {
-  background-color: #56fd00;
+  background-color: var(--ledWon);
 }
 .botton .botton__rectangle-buttom-orange {
   background-color: #840b12;
+  transform: translateX(30px);
 }
 .botton .botton__rectangle-buttom-orange::before {
-  background-color: #f96002;
+  background-color: var(--ledLose);
 }
 .botton .answers-container {
-  background-color: #fbfb05;
+  background-color: #e2e213;
   border-radius: 30px;
   border: 3px solid black;
-  grid-column: 2/4;
+  grid-column: 1/4;
   padding: 0 30px 0 30px;
   margin-bottom: 100px;
+  margin-left: 40px;
 }
 .botton .answers-container ul {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .botton-pad {
-  align-self: center;
   grid-column: 4/5;
   grid-row: 1/3;
   display: grid;
-  grid-template-columns: 30px 30px 30px;
-  grid-template-rows: 30px 30px 30px;
+  grid-template-columns: 3vw 3vw 3vw 3vw;
+  grid-template-rows: 3vw 3vw 3vw 3vw;
 }
 .botton-pad .pad-button {
-  width: 30px;
-  height: 30px;
+  width: 3vw;
+  height: 3vw;
   background-color: #086364;
   border: 3px solid black;
   border-radius: 10px;
@@ -625,8 +644,8 @@ main {
 .botton-pad .pad-button::before {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 3vw;
+  height: 3vw;
   background-color: #004e50;
   border: 3px solid black;
   border-radius: 10px;

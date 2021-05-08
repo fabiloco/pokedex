@@ -10,6 +10,9 @@ const answersList = document.getElementById('poke-answers');
 const loader = document.getElementById('loader');
 const pokedexElements = document.getElementById('pokedex');
 const caught = document.getElementById('caught');
+const ledWin = document.getElementById('ledWin');
+const ledLose = document.getElementById('ledLose');
+
 
 
 const getRandomNum = (max=150) => Math.round(Math.random() * max + 1);
@@ -35,7 +38,15 @@ const getAllPokemons = () => {
 // }
 
 const getAnswers = (answers = 4) => {
-    
+
+    if(ledLose.style.getPropertyValue('--ledLose') === '#ffb384'){
+        ledLose.style.setProperty('--ledLose', '#f96002');
+    }
+
+    if(ledWin.style.getPropertyValue('--ledWon') === '#c0ff9f'){
+        ledWin.style.setProperty('--ledWon', '#56fd00');
+    }
+
     pokeImg.classList.remove('game__image--show');
     pokeImg.classList.remove('game__image--error');
 
@@ -274,11 +285,13 @@ answersList.addEventListener('click', (e) => {
             caughtAnim();
             catchPokemon();
             createPokedex();
+            ledWin.style.setProperty('--ledWon','#c0ff9f');
             pokeImg.classList.add('game__image--show');
             setTimeout(getAnswers, 2500);
             console.log('Correcto');
         }else{
             pokeImg.classList.add('game__image--error');
+            ledLose.style.setProperty('--ledLose','#ffb384');
             setTimeout(getAnswers, 2500);
             console.log('Fallaste');
         }

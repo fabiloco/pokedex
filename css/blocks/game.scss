@@ -1,5 +1,7 @@
 .game{
-    background-color:white;
+
+    padding: 20px 0 20px 0;
+
     width: 50%;
     height: 100vh;
     position: relative;
@@ -61,5 +63,15 @@
     }
     to{
         filter: contrast(0%);
+    }
+}
+
+
+@media (min-width: 1281px) {
+    .game-container{
+        width: 70%;
+        margin-left: auto;
+        //margin-right: auto;
+
     }
 }
