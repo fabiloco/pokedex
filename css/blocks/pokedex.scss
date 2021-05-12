@@ -1,18 +1,21 @@
 .pokedex{
     background-color: var(--red);
-    width: 50%;
+    height: 76vh;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     padding: 20px;
-    margin-top:20px ;
     gap: 50px;
-    height: 100vh;
     overflow: scroll;
+    border-radius: 15px;
+    margin-top: 20px;
 
     &-container{
         width: 70%;
+        height: 80vh;
         margin-left: auto;
+        background-color: var(--red);
+        border-radius: 15px;
     }
 
     &__card{

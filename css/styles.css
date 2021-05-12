@@ -27,6 +27,7 @@ main {
   display: flex;
   justify-content: space-around;
   border-bottom: 3px solid var(--white);
+  display: none;
 }
 .header__title {
   color: var(--white);
@@ -35,11 +36,10 @@ main {
 }
 
 .game {
-  padding: 20px 0 20px 0;
   width: 50%;
-  height: 100vh;
+  padding-bottom: 40px;
   position: relative;
-  overflow: scroll;
+  overflow: hidden;
 }
 .game__image {
   width: 40%;
@@ -87,12 +87,6 @@ main {
   }
   to {
     filter: contrast(0%);
-  }
-}
-@media (min-width: 1281px) {
-  .game-container {
-    width: 70%;
-    margin-left: auto;
   }
 }
 .loader {
@@ -190,19 +184,22 @@ main {
 
 .pokedex {
   background-color: var(--red);
-  width: 50%;
+  height: 76vh;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   padding: 20px;
-  margin-top: 20px;
   gap: 50px;
-  height: 100vh;
   overflow: scroll;
+  border-radius: 15px;
+  margin-top: 20px;
 }
 .pokedex-container {
   width: 70%;
+  height: 80vh;
   margin-left: auto;
+  background-color: var(--red);
+  border-radius: 15px;
 }
 .pokedex__card {
   perspective: 1000px;
@@ -395,6 +392,10 @@ main {
   animation-duration: 5s;
 }
 
+.device {
+  border-radius: 15px;
+}
+
 .device-container {
   background-color: var(--red);
   border-radius: 15px;
@@ -403,6 +404,7 @@ main {
   border-bottom: 10px solid var(--darkRed);
   position: relative;
   box-shadow: -10px 10px 15px grey;
+  height: 92vh;
 }
 
 .top {
@@ -411,6 +413,7 @@ main {
   background-color: var(--darkRed);
   height: 100px;
   border-top-left-radius: 15px;
+  border-radius: 15px;
 }
 
 .top-circles {
@@ -564,7 +567,7 @@ main {
 .botton-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 80px 260px;
   justify-items: center;
   align-items: center;
 }
@@ -619,7 +622,7 @@ main {
   border: 3px solid black;
   grid-column: 1/4;
   padding: 0 30px 0 30px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   margin-left: 40px;
 }
 .botton .answers-container ul {
@@ -696,6 +699,22 @@ main {
 .botton-pad .pad-center::before {
   border: none;
   background-color: #004e50;
+}
+
+.top2 {
+  clip-path: polygon(0 0, 0 40%, 46% 40%, 70% 100%, 100% 100%, 100% 0);
+}
+
+.top-circles2 {
+  clip-path: polygon(0 0, 0 40%, 46% 40%, 70% 100%, 100% 100%, 100% 0);
+}
+
+.main {
+  padding: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=styles.css.map */
